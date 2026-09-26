@@ -64,6 +64,20 @@ nix run nixpkgs#opencode           # or github:anomalyco/opencode for latest dev
 > [!TIP]
 > Remove versions older than 0.1.x before installing.
 
+### Android (Termux)
+
+The `curl -fsSL https://opencode.ai/install | bash` script and the prebuilt `linux-arm64` release binaries are built against glibc/musl and will not run under Android's Bionic libc, even on an arm64 device. Install via npm on top of Termux's own Node.js build instead, which compiles any native dependencies against Bionic on-device:
+
+```bash
+pkg update && pkg upgrade
+pkg install nodejs-lts ripgrep git
+npm i -g opencode-ai@latest
+opencode
+```
+
+> [!TIP]
+> The TUI already collapses to a single-column layout below ~120 columns, so it adapts to a phone-sized terminal automatically. For the best fit on a device like a Galaxy A33 5G: in Termux, hold the terminal and choose **More** > **Style** to shrink the font size (7-9 works well in portrait), rotate to landscape for wider layouts and a usable on-screen keyboard row, and enable the extra-keys bar (`Esc`, arrows, `Ctrl`, `Tab`) since Android keyboards hide those by default.
+
 ### Desktop App (BETA)
 
 OpenCode is also available as a desktop application. Download directly from the [releases page](https://github.com/anomalyco/opencode/releases) or [opencode.ai/download](https://opencode.ai/download).
