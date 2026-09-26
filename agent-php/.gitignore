@@ -1,0 +1,5 @@
+data/agent.sqlite*
+data/settings.json
+data/logs/
+data/pids/
+data/workspaces/
